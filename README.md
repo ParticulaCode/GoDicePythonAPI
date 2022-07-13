@@ -49,8 +49,10 @@ def main():
 
 Connecting to a die and creating a die object (use "create_dice" and pass it a die device):
 ```python
-My_die = create_dice(dice_devices[0])
+myDie = create_dice(dice_devices[0])
 ```
+
+Once you have the GoDice instance ready (e.g. myDie from the example above) you can call the following class functions:
 
 Messages
 -----------
