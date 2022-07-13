@@ -137,7 +137,7 @@ while not die_object.result_queue.empty():
 
 ```python
 # Black		0
-# Red		  1
+# Red		1
 # Green		2
 # Blue		3
 # Yellow	4
