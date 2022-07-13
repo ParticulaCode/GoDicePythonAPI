@@ -18,6 +18,9 @@ To run the demo (that uses the API) make sure you have the Bleak library install
 python main.py
 ```
 
+Then enter the index of the GoDice you want to connect (or click Enter to connect to all available dice).
+Once connected you will start get notification from the connected dice (Rolling, Stable, etc...)
+
  Dependencies Installation
 ------------
 The GoDice Python API is dependent on the [Bleak](https://github.com/hbldh/bleak) library for bluetooth (BLE) communication with the dice
