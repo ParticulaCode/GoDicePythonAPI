@@ -87,7 +87,7 @@ send_color_request()
 ```python
 # Changes die type (shell)
 # new_die_type - DieType Enum:
-# D6 = 0 (default)
+#	D6 = 0 (default)
 #	D20 = 1,
 #	D10 = 2,
 #	D10x = 3,
