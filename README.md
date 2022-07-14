@@ -7,10 +7,10 @@ Use the GoDice Python API to integrate GoDice functionality into your own Python
 
 Here are some of the things that you can do with the GoDice Python API:
 
-* Turn ON/OFF GoDice RGB Leds
+* Turn ON/OFF GoDice RGB LEDs
 * Ask for the die Color (dots color)
 * Ask for the die battery level
-* Get differernt notifications reagrding the die state (Rolling or Stable and get the outcome number)
+* Get different notifications regarding the die state (Rolling or Stable and get the outcome number)
 * Use and configure different shells (D6, D20, D12 etc.)
 
 To run the demo (that uses the API) make sure you have the Bleak library installed and run main.py as following:
@@ -23,7 +23,7 @@ Once connected you will start get notification from the connected dice (Rolling,
 
  Dependencies Installation
 ------------
-The GoDice Python API is dependent on the [Bleak](https://github.com/hbldh/bleak) library for bluetooth (BLE) communication with the dice
+The GoDice Python API is dependent on the [Bleak](https://github.com/hbldh/bleak) library for Bluetooth (BLE) communication with the dice.
 
 You can install bleak by using this command:
 
@@ -40,7 +40,7 @@ To discover dice using GoDice library:
 ```python
 from godice import *
 
-# Example how to discover GoDice bluetooth devices  
+# Example how to discover GoDice Bluetooth devices  
 def main():  
   
 	# Discovering GoDice devices using BLE  
@@ -62,7 +62,7 @@ Activating LEDs:
 # Turn On/Off RGB LEDs, will turn off if led1 and led2 are None
 # led1 - a list to control the 1st LED in the following format '[R, G, B]'
 #        where R, G, and B are numbers in the range of 0-255
-# led2 - same as led1 fot the second led
+# led2 - same as led1 for the second led
 
 set_led(led1: list, led2: list)
 ```
@@ -106,7 +106,7 @@ Reading responses
 Each die object has a "result_queue" attribute.
 Whenever a response/message is sent to the die, it's response code (if it has one) and it's value placed in the result queue as a tuple.
 
-Example for iterating throught the queue:
+Example for iterating through the queue:
 ```python
 while not die_object.result_queue.empty():
 
@@ -133,7 +133,7 @@ while not die_object.result_queue.empty():
 
 ("FS" - Fake stable event, Value of die)
 
-("B" - Battery response, Battery charge precent: 0-100)
+("B" - Battery response, Battery charge percent: 0-100)
 
 ("C" - Color response, ID of color of die: 0-5)
 
