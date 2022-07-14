@@ -104,7 +104,7 @@ set_die_type(new_die_type)
 Reading responses
 -----------
 Each die object has a "result_queue" attribute.
-Whenever a response/message is sent to the die, it's resposne code (if it has one) and it's value placed in the result queue as a tuple.
+Whenever a response/message is sent to the die, it's response code (if it has one) and it's value placed in the result queue as a tuple.
 
 Example for iterating throught the queue:
 ```python
