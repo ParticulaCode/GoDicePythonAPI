@@ -493,7 +493,7 @@ async def _discover_dice_async():
 
     # Iterating through found devices
     for d in devices:
-        if type(d.name) is str:
+        if isinstance(d.name, str):
             # Filtering only GoDice
             if d.name.startswith("GoDice"):
                 dice_devices.append(d)
