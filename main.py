@@ -24,7 +24,7 @@ def main():
 
     if inp.isdigit():
         # Single die
-        go_dice = create_dice(dice_devices[int(inp)])
+        go_dice = create_dice(dice_devices[int(inp)].address)
         connected_dice.append(go_dice)
     else:
         # Connect to all available dice
