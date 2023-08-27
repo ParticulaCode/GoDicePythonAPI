@@ -1,0 +1,16 @@
+[build-system]
+requires = ["flit_core >=3.2,<4"]
+build-backend = "flit_core.buildapi"
+
+[project]
+name = "godice"
+authors = [{name = "Particula", email = "iavtomator@gmail.com"}]
+readme = "README.md"
+dynamic = ["version", "description"]
+dependencies = [
+    "bleak >=0.20.2",
+]
+requires-python = ">=3.8"
+
+[project.urls]
+Home = "https://github.com/ParticulaCode/GoDicePythonAPI"
