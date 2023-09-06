@@ -10,7 +10,7 @@ dynamic = ["version", "description"]
 dependencies = [
     "bleak >=0.20.2",
 ]
-requires-python = ">=3.8"
+requires-python = ">=3.6"
 
 [project.urls]
 Home = "https://github.com/ParticulaCode/GoDicePythonAPI"
