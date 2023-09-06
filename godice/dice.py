@@ -1,3 +1,6 @@
+"""
+Dice API
+"""
 import asyncio
 import struct
 import enum
@@ -94,7 +97,7 @@ class Dice:
 
     async def get_color(self):
         """
-        Read dice color ()
+        Read dice color
         """
         self._color = self._color or await self._fetch_color()
         return self._color

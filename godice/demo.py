@@ -1,3 +1,6 @@
+"""
+Demo script that connects to the closest dice, sets LED color and listens for position updates
+"""
 import asyncio
 import bleak
 import godice

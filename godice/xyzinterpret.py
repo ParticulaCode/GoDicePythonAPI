@@ -1,5 +1,5 @@
 """
-Includes position vectors and functions to translate a coord to a number based on a dice type
+Tools needed to translate coords sent by a dice to a resulting number based on a dice type
 """
 
 import math
@@ -192,10 +192,10 @@ def _get_closest_vector(die_table, coord):
     :return: the value of the closest vector to the die's vector
     """
 
-    def _key2distance(key):
+    def _distance_as_key(key):
         vec = die_table[key]
         return math.dist(coord, vec)
-    return min(die_table.keys(), key=_key2distance)
+    return min(die_table.keys(), key=_distance_as_key)
 
 
 def get_rolled_number_d6(xyz):

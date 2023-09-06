@@ -33,7 +33,7 @@ xyz_interpret_map = {
 
 def create(ble_client: bleak.BleakClient, dice_type: DiceType):
     """
-    Creates an object representing the specified dice type
+    Creates Dice API object representing the specified type of a dice
     """
     _xyzinterpret_fn = xyz_interpret_map[dice_type]
     return dice.Dice(ble_client, _xyzinterpret_fn)
