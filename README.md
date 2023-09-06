@@ -51,7 +51,7 @@ import godice
 async def main():
     mac = "00:00:00:00:00:00"
     client = bleak.BleakClient(mac, timeout=15)
-    async with godice.create(client, godice.DiceType.D6) as dice:
+    async with godice.create(client, godice.DiceShell.D6) as dice:
 		print("Connected")
         blue_rgb = (0, 0, 255)
         yellow_rgb = (255, 255, 0)

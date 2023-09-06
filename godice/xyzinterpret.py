@@ -1,5 +1,5 @@
 """
-Tools needed to translate coords sent by a dice to a resulting number based on a dice type
+Tools needed to translate coords sent by a dice to a resulting number based on a dice shell
 """
 
 import math

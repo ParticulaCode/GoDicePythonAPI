@@ -19,7 +19,7 @@ async def main():
     dev, _adv_data = select_closest_device(dev_advdata_tuples)
     client = bleak.BleakClient(dev, timeout=15)
 
-    async with godice.create(client, godice.DiceType.D6) as dice:
+    async with godice.create(client, godice.DiceShell.D6) as dice:
         print(f"Connected to {dev.name}")
 
         blue_rgb = (0, 0, 255)

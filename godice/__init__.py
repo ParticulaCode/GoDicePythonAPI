@@ -5,7 +5,7 @@ __version__ = "0.1.0"
 
 from .factory import (
     create,
-    DiceType
+    DiceShell
 )
 from .dice import (
     StabilityDescriptor,

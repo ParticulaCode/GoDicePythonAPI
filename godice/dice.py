@@ -33,14 +33,14 @@ class Dice:
     """
     Represents a dice providing API to features
     """
-    def __init__(self, ble_client, xyz_interpret_fn) -> None:
+    def __init__(self, ble_client) -> None:
         self._client = ble_client
         self._rx_char = None
         self._tx_char = None
         self._color = None
         self._color_upd_q = asyncio.Queue()
         self._battery_lvl_upd_q = asyncio.Queue()
-        self._xyz_interpret_fn = xyz_interpret_fn
+        self._xyz_interpret_fn = None
         self._nop_cb = lambda _: None
         self._position_upd_cb = self._nop_cb
 
