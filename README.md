@@ -51,6 +51,10 @@ import godice
 async def main():
     mac = "00:00:00:00:00:00"
     client = bleak.BleakClient(mac, timeout=15)
+
+    # Python context manager (async with) is used for convenient connection handling
+    # Device stays connected during `async with` block execution and auto-disconnected on block finish
+    # Otherwise, dice.connect/dice.disconnect can be used instead 
     async with godice.create(client, godice.DiceShell.D6) as dice:
 		print("Connected")
         blue_rgb = (0, 0, 255)
@@ -64,13 +68,19 @@ async def main():
         print(f"Battery: {battery_lvl}")
         
         print("Listening to position updates. Flip your dice")
-        await dice.subscribe_number_notification(print_upd)
+        await dice.subscribe_number_notification(notification_callback)
         await asyncio.sleep(30)
         await dice.set_led(off_rgb, off_rgb)
 
 
-async def print_upd(stability_descr, number):
-    print(f"Stability descriptor: {stability_descr}, number: {number}")
+async def notification_callback(number, stability_descr):
+    """
+    GoDice number notification callback.
+    Called each time GoDice is flipped, receiving flip event data:
+    :param number: a rolled number
+    :param stability_descr: an additional value clarifying device movement state, ie stable, rolling...
+    """
+    print(f"Number: {number}, stability descriptor: {stability_descr}")
 
 
 asyncio.run(main())
