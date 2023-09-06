@@ -38,8 +38,8 @@ async def main():
         await dice.set_led(off_rgb, off_rgb)
 
 
-async def print_notification(stability_descr, number):
-    print(f"Stability descriptor: {stability_descr}, number: {number}")
+async def print_notification(number, stability_descr):
+    print(f"Number: {number}, stability descriptor: {stability_descr}")
 
 
 def filter_godice_devices(dev_advdata_tuples):

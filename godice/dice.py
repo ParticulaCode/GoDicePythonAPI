@@ -4,7 +4,7 @@ Dice API
 import asyncio
 import struct
 import enum
-
+from typing import Callable, Awaitable
 
 class Color(enum.Enum):
     """
@@ -44,7 +44,6 @@ class Dice:
         self._nop_cb = lambda _: None
         self._position_upd_cb = self._nop_cb
 
-
     async def connect(self):
         await self._client.connect()
         self._tx_char = self._client.services.get_characteristic(
@@ -82,9 +81,9 @@ class Dice:
         """
         Pulses the die's leds for set time
         :param pulse_count: How many pulses
-        :param on_time: How much time to spend on (units of 10 ms)
-        :param off_time: How much time to spend off (units of 10 ms)
-        :param rgb: List of RGB values to set die to pulse to
+        :param on_time_ms: How much time to spend on (units of 10 ms)
+        :param off_time_ms: How much time to spend off (units of 10 ms)
+        :param rgb_tuple: tuple of RGB values set to pulse
         """
         _validate_rgb_tuple(rgb_tuple)
 
@@ -118,16 +117,17 @@ class Dice:
         await self._client.write_gatt_char(self._tx_char, msg)
         return await self._battery_lvl_upd_q.get()
 
-    async def subscribe_number_notification(self, cb):
+    async def subscribe_number_notification(self, callback: Callable[[int, StabilityDescriptor], Awaitable[None]]):
         """
         Subscribe to receiving position change notifications
+        :param callback: callback function receiving number update notifications
         """
-        self._position_upd_cb = cb
+        self._position_upd_cb = callback
 
     async def _handle_upd(self, _char, data: bytearray):
         first_byte = data[0]
         if first_byte == 82:
-            await self._position_upd_cb(StabilityDescriptor.ROLLING, 0)
+            await self._position_upd_cb(0, StabilityDescriptor.ROLLING)
             return
 
         second_byte = data[1]
@@ -143,22 +143,22 @@ class Dice:
         if first_byte == 83:
             xyz = _get_xyz_from_bytes(data[1:4])
             rolled_value = self._xyz_interpret_fn(xyz)
-            await self._position_upd_cb(StabilityDescriptor.STABLE, rolled_value)
+            await self._position_upd_cb(rolled_value, StabilityDescriptor.STABLE)
             return
 
         if second_byte == 83:
             xyz = _get_xyz_from_bytes(data[2:5])
             rolled_value = self._xyz_interpret_fn(xyz)
-            move_spec = None
+            descr = None
             if first_byte == 70:
-                move_spec = StabilityDescriptor.FAKE_STABLE
+                descr = StabilityDescriptor.FAKE_STABLE
             elif first_byte == 84:
-                move_spec = StabilityDescriptor.TILT_STABLE
+                descr = StabilityDescriptor.TILT_STABLE
             elif first_byte == 77:
-                move_spec = StabilityDescriptor.MOVE_STABLE
+                descr = StabilityDescriptor.MOVE_STABLE
             else:
-                move_spec = None
-            await self._position_upd_cb(move_spec, rolled_value)
+                descr = None
+            await self._position_upd_cb(rolled_value, descr)
 
 
 def _validate_rgb_tuple(rgb_tuple):
