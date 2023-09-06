@@ -8,7 +8,7 @@ from . import dice
 from . import xyzinterpret
 
 
-class DiceShell(enum.Enum):
+class Shell(enum.Enum):
     """
     Available shells a dice may be wrapped into
     """
@@ -21,33 +21,33 @@ class DiceShell(enum.Enum):
     D12 = 6
 
 xyz_interpret_map = {
-    DiceShell.D6: xyzinterpret.get_rolled_number_d6,
-    DiceShell.D10: xyzinterpret.get_rolled_number_d10,
-    DiceShell.D10X: xyzinterpret.get_rolled_number_d10x,
-    DiceShell.D20: xyzinterpret.get_rolled_number_d20,
-    DiceShell.D4: xyzinterpret.get_rolled_number_d4,
-    DiceShell.D8: xyzinterpret.get_rolled_number_d8,
-    DiceShell.D12: xyzinterpret.get_rolled_number_d12,
+    Shell.D6: xyzinterpret.get_rolled_number_d6,
+    Shell.D10: xyzinterpret.get_rolled_number_d10,
+    Shell.D10X: xyzinterpret.get_rolled_number_d10x,
+    Shell.D20: xyzinterpret.get_rolled_number_d20,
+    Shell.D4: xyzinterpret.get_rolled_number_d4,
+    Shell.D8: xyzinterpret.get_rolled_number_d8,
+    Shell.D12: xyzinterpret.get_rolled_number_d12,
 }
 
 
-def create(ble_client: bleak.BleakClient, dice_shell: DiceShell):
+def create(ble_client: bleak.BleakClient, dice_shell: Shell):
     """
     Creates Dice API object representing the specified type of a dice
     :param ble_client: BleakClient
-    :param dice_shell: DiceShell
+    :param dice_shell: Shell
     """
     _dice = dice.Dice(ble_client)
     set_shell(_dice, dice_shell)
     return _dice
 
 
-def set_shell(_dice: dice.Dice, dice_shell: DiceShell):
+def set_shell(_dice: dice.Dice, dice_shell: Shell):
     """
     Change a dice shell.
     Should be called in order to receive correct number notifications corresponding to a newly set shell
     :param dice: a Dice object to change a shell for
-    :param dice_shell: DiceShell
+    :param dice_shell: Shell
     """
     _xyzinterpret_fn = xyz_interpret_map[dice_shell]
     _dice._xyz_interpret_fn = _xyzinterpret_fn

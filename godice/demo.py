@@ -22,7 +22,7 @@ async def main():
     # Python context manager (async with) is used for convenient connection handling
     # Device stays connected during `async with` block execution and auto-disconnected on block finish
     # Otherwise, dice.connect/dice.disconnect can be used instead 
-    async with godice.create(client, godice.DiceShell.D6) as dice:
+    async with godice.create(client, godice.Shell.D6) as dice:
         print(f"Connected to {dev.name}")
 
         blue_rgb = (0, 0, 255)
