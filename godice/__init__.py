@@ -5,6 +5,7 @@ __version__ = "0.1.0"
 
 from .factory import (
     create,
+    set_shell,
     DiceShell
 )
 from .dice import (
