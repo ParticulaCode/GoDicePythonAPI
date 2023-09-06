@@ -34,6 +34,8 @@ xyz_interpret_map = {
 def create(ble_client: bleak.BleakClient, dice_shell: DiceShell):
     """
     Creates Dice API object representing the specified type of a dice
+    :param ble_client: BleakClient
+    :param dice_shell: DiceShell
     """
     _dice = dice.Dice(ble_client)
     set_shell(_dice, dice_shell)
@@ -44,6 +46,8 @@ def set_shell(_dice: dice.Dice, dice_shell: DiceShell):
     """
     Change a dice shell.
     Should be called in order to receive correct number notifications corresponding to a newly set shell
+    :param dice: a Dice object to change a shell for
+    :param dice_shell: DiceShell
     """
     _xyzinterpret_fn = xyz_interpret_map[dice_shell]
     _dice._xyz_interpret_fn = _xyzinterpret_fn

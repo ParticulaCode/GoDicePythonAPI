@@ -97,6 +97,7 @@ class Dice:
     async def get_color(self):
         """
         Read dice color
+        :returns: Color
         """
         self._color = self._color or await self._fetch_color()
         return self._color
@@ -111,6 +112,7 @@ class Dice:
     async def get_battery_level(self):
         """
         Read a battery level
+        :returns: int 0-100%
         """
         cmd_code = 3
         msg = bytearray([cmd_code])
