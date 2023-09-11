@@ -58,7 +58,7 @@ def filter_godice_devices(dev_advdata_tuples):
     return [
         (dev, adv_data)
         for dev, adv_data in dev_advdata_tuples
-        if dev.name.startswith("GoDice")
+        if (dev.name and dev.name.startswith("GoDice"))
     ]
 
 
