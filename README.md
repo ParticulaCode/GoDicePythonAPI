@@ -5,6 +5,8 @@
 
 Use the GoDice Python API to integrate GoDice functionality into your own Python applications
 
+![PyPI - Version](https://img.shields.io/pypi/v/godice)
+
 **Supported features:**
 
 * Turn ON/OFF GoDice RGB LEDs
@@ -15,18 +17,8 @@ Use the GoDice Python API to integrate GoDice functionality into your own Python
 
 ## Installation
 
-- once deployed to PyPI
-
 ```
 pip install godice
-```
-
-- meanwhile, to install a local copy
-1. Clone the repo
-2. cd into the root dir
-3. Install a local copy
-```
-pip install .
 ```
 
 ## Demo

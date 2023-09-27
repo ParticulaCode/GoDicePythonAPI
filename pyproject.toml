@@ -4,7 +4,17 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "godice"
-authors = [{name = "Particula", email = "iavtomator@gmail.com"}]
+authors = [
+    {name = "Guy Levi", email = "todo_update@it.com"},
+    {name = "Anton Ptashnik", email = "iavtomator@gmail.com"},
+]
+license = {file = "LICENSE.md"}
+classifiers = [
+    "Framework :: AsyncIO",
+    "Operating System :: Microsoft :: Windows :: Windows 10",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: MacOS",
+]
 readme = "README.md"
 dynamic = ["version", "description"]
 dependencies = [
