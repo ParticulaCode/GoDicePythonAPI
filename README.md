@@ -5,7 +5,7 @@
 
 Use the GoDice Python API to integrate GoDice functionality into your own Python applications
 
-![PyPI - Version](https://img.shields.io/pypi/v/godice)
+[![PyPI version](https://badge.fury.io/py/godice.svg)](https://pypi.org/project/godice)
 
 **Supported features:**
 
