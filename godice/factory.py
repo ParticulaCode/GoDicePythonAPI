@@ -31,12 +31,13 @@ xyz_interpret_map = {
 }
 
 
-def create(ble_client: bleak.BleakClient, dice_shell: Shell):
+def create(ble_address: str, dice_shell: Shell, timeout: int=15, disconnect_cb=None):
     """
     Creates Dice API object representing the specified type of a dice
     :param ble_client: BleakClient
     :param dice_shell: Shell
     """
+    ble_client = bleak.BleakClient(ble_address, timeout=timeout, disconnected_callback=disconnect_cb)
     _dice = dice.Dice(ble_client)
     set_shell(_dice, dice_shell)
     return _dice

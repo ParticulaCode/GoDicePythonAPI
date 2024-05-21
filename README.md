@@ -42,12 +42,11 @@ import godice
 
 async def main():
     mac = "00:00:00:00:00:00"
-    client = bleak.BleakClient(mac, timeout=15)
 
     # Python context manager (async with) is used for convenient connection handling
     # Device stays connected during `async with` block execution and auto-disconnected on block finish
     # Otherwise, dice.connect/dice.disconnect can be used instead 
-    async with godice.create(client, godice.Shell.D6) as dice:
+    async with godice.create(mac, godice.Shell.D6, timeout=30) as dice:
 		print("Connected")
         blue_rgb = (0, 0, 255)
         yellow_rgb = (255, 255, 0)
