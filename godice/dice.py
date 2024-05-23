@@ -41,8 +41,9 @@ class Dice:
         self._color_upd_q = asyncio.Queue()
         self._battery_lvl_upd_q = asyncio.Queue()
         self._xyz_interpret_fn = None
-        self._nop_cb = lambda _: None
-        self._position_upd_cb = self._nop_cb
+        async def _noop_cb(_num, _stab_descr):
+            pass
+        self._position_upd_cb = _noop_cb
 
     async def connect(self):
         await self._client.connect()

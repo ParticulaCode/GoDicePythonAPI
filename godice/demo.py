@@ -9,21 +9,20 @@ import godice
 async def main():
     print("Discovering GoDice devices...")
     discovery_res = await bleak.BleakScanner.discover(timeout=10, return_adv=True)
-    dev_advdata_tuples = discovery_res.values()
-    dev_advdata_tuples = filter_godice_devices(dev_advdata_tuples)
+    device_advdata_tuples = discovery_res.values()
+    device_advdata_tuples = filter_godice_devices(device_advdata_tuples)
 
     print("Discovered devices...")
-    print_device_info(dev_advdata_tuples)
+    print_device_info(device_advdata_tuples)
 
     print("Connecting to a closest device...")
-    dev, _adv_data = select_closest_device(dev_advdata_tuples)
-    client = bleak.BleakClient(dev, timeout=15)
+    device, _adv_data = select_closest_device(device_advdata_tuples)
 
     # Python context manager (async with) is used for convenient connection handling
     # Device stays connected during `async with` block execution and auto-disconnected on block finish
     # Otherwise, dice.connect/dice.disconnect can be used instead 
-    async with godice.create(client, godice.Shell.D6) as dice:
-        print(f"Connected to {dev.name}")
+    async with godice.create(device.address, godice.Shell.D6) as dice:
+        print(f"Connected to {device.name}")
 
         blue_rgb = (0, 0, 255)
         yellow_rgb = (255, 255, 0)
