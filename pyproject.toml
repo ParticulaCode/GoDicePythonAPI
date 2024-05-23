@@ -5,6 +5,7 @@ build-backend = "flit_core.buildapi"
 [project]
 name = "godice"
 version = "0.1.1"
+description = "A Python API for GoDice"
 authors = [
     {name = "Guy Levi", email = "guyguylevi60@gmail.com"},
     {name = "Anton Ptashnik", email = "iavtomator@gmail.com"},
@@ -17,7 +18,6 @@ classifiers = [
     "Operating System :: MacOS",
 ]
 readme = "README.md"
-dynamic = ["version", "description"]
 dependencies = [
     "bleak >=0.20.2",
 ]
