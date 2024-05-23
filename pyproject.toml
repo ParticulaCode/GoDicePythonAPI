@@ -4,7 +4,7 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "godice"
-version = "0.1.1"
+version = "0.1.2"
 description = "A Python API for GoDice"
 authors = [
     {name = "Guy Levi", email = "guyguylevi60@gmail.com"},
