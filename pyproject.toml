@@ -4,8 +4,9 @@ build-backend = "flit_core.buildapi"
 
 [project]
 name = "godice"
+version = "0.1.1"
 authors = [
-    {name = "Guy Levi", email = "todo_update@it.com"},
+    {name = "Guy Levi", email = "guyguylevi60@gmail.com"},
     {name = "Anton Ptashnik", email = "iavtomator@gmail.com"},
 ]
 license = {file = "LICENSE.md"}
